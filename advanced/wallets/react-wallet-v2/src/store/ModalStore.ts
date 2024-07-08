@@ -25,6 +25,7 @@ interface State {
     | 'SessionSendCallsModal'
     | 'SessionUnsuportedMethodModal'
     | 'SessionSignCosmosModal'
+    | 'SessionSignBbcModal'
     | 'SessionSignSolanaModal'
     | 'SessionSignPolkadotModal'
     | 'SessionSignNearModal'

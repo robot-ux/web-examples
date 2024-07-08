@@ -16,6 +16,7 @@ import { Fragment } from 'react'
 import { useSnapshot } from 'valtio'
 import useSmartAccounts from '@/hooks/useSmartAccounts'
 import { useRouter } from 'next/router'
+import { BBC_CHAINS } from '@/data/BnbBeaconChainData'
 
 export default function HomePage() {
   const {
@@ -29,7 +30,8 @@ export default function HomePage() {
     tronAddress,
     tezosAddress,
     kadenaAddress,
-    smartAccountEnabled
+    smartAccountEnabled,
+    bnbBeaconChainAddress,
   } = useSnapshot(SettingsStore.state)
   const { getAvailableSmartAccounts } = useSmartAccounts()
   const { push } = useRouter()
@@ -41,6 +43,17 @@ export default function HomePage() {
       <Text h4 css={{ marginBottom: '$5' }}>
         Mainnets
       </Text>
+      {Object.entries(BBC_CHAINS).map(([caip10, { name, logo, rgb }]) => (
+        <AccountCard
+          key={name}
+          name={name}
+          logo={logo}
+          rgb={rgb}
+          address={bnbBeaconChainAddress}
+          chainId={caip10.toString()}
+          data-testid={'chain-card-' + caip10.toString()}
+        />
+      ))}
       {Object.entries(EIP155_MAINNET_CHAINS).map(([caip10, { name, logo, rgb }]) => (
         <AccountCard
           key={name}
@@ -52,7 +65,7 @@ export default function HomePage() {
           data-testid={'chain-card-' + caip10.toString()}
         />
       ))}
-      {Object.entries(COSMOS_MAINNET_CHAINS).map(([caip10, { name, logo, rgb }]) => (
+      {/* {Object.entries(COSMOS_MAINNET_CHAINS).map(([caip10, { name, logo, rgb }]) => (
         <AccountCard
           key={name}
           name={name}
@@ -128,7 +141,7 @@ export default function HomePage() {
           chainId={caip10}
           data-testid={'chain-card-' + caip10.toString()}
         />
-      ))}
+      ))} */}
 
       {testNets ? (
         <Fragment>

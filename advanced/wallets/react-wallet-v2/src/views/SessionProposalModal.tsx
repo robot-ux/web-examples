@@ -37,6 +37,8 @@ import useSmartAccounts from '@/hooks/useSmartAccounts'
 import { EIP5792_METHODS } from '@/data/EIP5792Data'
 import { getWalletCapabilities } from '@/utils/EIP5792WalletUtil'
 import { EIP7715_METHOD } from '@/data/EIP7715Data'
+import { bnbBeaconChainAddresses } from '@/utils/BnbBeaconChainWalletUtil'
+import { BBC_CHAINS, BBC_SIGNING_METHODS } from '@/data/BnbBeaconChainData'
 
 const StyledText = styled(Text, {
   fontWeight: 400
@@ -71,6 +73,9 @@ export default function SessionProposalModal() {
     // cosmos
     const cosmosChains = Object.keys(COSMOS_MAINNET_CHAINS)
     const cosmosMethods = Object.values(COSMOS_SIGNING_METHODS)
+
+    const bbcChains = Object.keys(BBC_CHAINS)
+    const bbcMethods = Object.values(BBC_SIGNING_METHODS)
 
     // Kadena
     const kadenaChains = Object.keys(KADENA_CHAINS)
@@ -112,6 +117,12 @@ export default function SessionProposalModal() {
         methods: cosmosMethods,
         events: [],
         accounts: cosmosChains.map(chain => `${chain}:${cosmosAddresses[0]}`).flat()
+      },
+      bbc: {
+        chains: bbcChains,
+        methods: bbcMethods,
+        events: ['accountsChanged', 'chainChanged'],
+        accounts: bbcChains.map(chain => `${chain}:${bnbBeaconChainAddresses[0]}`).flat()
       },
       kadena: {
         chains: kadenaChains,
@@ -223,6 +234,8 @@ export default function SessionProposalModal() {
         return eip155Addresses[0]
       case 'cosmos':
         return cosmosAddresses[0]
+      case 'bbc':
+        return bnbBeaconChainAddresses[0]
       case 'kadena':
         return kadenaAddresses[0]
       case 'mvx':
@@ -255,6 +268,7 @@ export default function SessionProposalModal() {
 
   // Hanlde approve action, construct session namespace
   const onApprove = useCallback(async () => {
+    console.log('hyl: ', proposal, namespaces)
     if (proposal && namespaces) {
       setIsLoadingApprove(true)
       try {

@@ -22,6 +22,22 @@ export type EIP155Chain = {
  * Chains
  */
 export const EIP155_MAINNET_CHAINS: Record<string, EIP155Chain> = {
+  'eip155:56': {
+    chainId: 56,
+    name: 'BSC Mainnet',
+    logo: '/chain-logos/cosmos-cosmoshub-4.png',
+    rgb: '107, 111, 147',
+    rpc: '',
+    namespace: 'eip155'
+  },
+  'eip155:97': {
+    chainId: 97,
+    name: 'BSC Testnet',
+    logo: '/chain-logos/cosmos-cosmoshub-4.png',
+    rgb: '107, 111, 147',
+    rpc: '',
+    namespace: 'eip155'
+  },
   'eip155:1': {
     chainId: 1,
     name: 'Ethereum',
@@ -61,7 +77,7 @@ export const EIP155_MAINNET_CHAINS: Record<string, EIP155Chain> = {
     rgb: '242, 242, 242',
     rpc: 'https://mainnet.era.zksync.io/',
     namespace: 'eip155'
-  }
+  },
 }
 
 export const EIP155_TEST_CHAINS: Record<string, EIP155Chain> = {
@@ -115,7 +131,7 @@ export const EIP155_TEST_CHAINS: Record<string, EIP155Chain> = {
     rgb: '242, 242, 242',
     rpc: 'https://testnet.era.zksync.dev/',
     namespace: 'eip155'
-  }
+  },
 }
 
 export const EIP155_CHAINS = { ...EIP155_MAINNET_CHAINS, ...EIP155_TEST_CHAINS }

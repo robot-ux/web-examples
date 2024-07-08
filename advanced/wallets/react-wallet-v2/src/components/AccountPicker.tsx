@@ -8,6 +8,7 @@ import { tronAddresses } from '@/utils/TronWalletUtil'
 import { tezosAddresses } from '@/utils/TezosWalletUtil'
 import { kadenaAddresses } from '@/utils/KadenaWalletUtil'
 import { useSnapshot } from 'valtio'
+import { bnbBeaconChainAddresses } from '@/utils/BnbBeaconChainWalletUtil'
 
 export default function AccountPicker() {
   const { account } = useSnapshot(SettingsStore.state)
@@ -18,6 +19,7 @@ export default function AccountPicker() {
     SettingsStore.setAccount(account)
     SettingsStore.setEIP155Address(eip155Addresses[account])
     SettingsStore.setCosmosAddress(cosmosAddresses[account])
+    SettingsStore.setBnbBeaconChainAddress(bnbBeaconChainAddresses[account])
     SettingsStore.setSolanaAddress(solanaAddresses[account])
     SettingsStore.setNearAddress(nearAddresses[account])
     SettingsStore.setMultiversxAddress(multiversxAddresses[account])

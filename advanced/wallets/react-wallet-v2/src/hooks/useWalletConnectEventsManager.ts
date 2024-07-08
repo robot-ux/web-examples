@@ -20,6 +20,7 @@ import { approveEIP5792Request } from '@/utils/EIP5792RequestHandlerUtils'
 import EIP155Lib from '@/lib/EIP155Lib'
 import { getWallet } from '@/utils/EIP155WalletUtil'
 import { EIP7715_METHOD } from '@/data/EIP7715Data'
+import { BBC_SIGNING_METHODS } from '@/data/BnbBeaconChainData'
 
 export default function useWalletConnectEventsManager(initialized: boolean) {
   /******************************************************************************
@@ -98,6 +99,9 @@ export default function useWalletConnectEventsManager(initialized: boolean) {
           }
           return ModalStore.open('SessionSendCallsModal', { requestEvent, requestSession })
         }
+
+        case BBC_SIGNING_METHODS.BBC_SIGN:
+          return ModalStore.open('SessionSignBbcModal', { requestEvent, requestSession })
 
         case COSMOS_SIGNING_METHODS.COSMOS_SIGN_DIRECT:
         case COSMOS_SIGNING_METHODS.COSMOS_SIGN_AMINO:

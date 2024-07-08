@@ -23,6 +23,7 @@ interface State {
   account: number
   eip155Address: string
   cosmosAddress: string
+  bnbBeaconChainAddress: string
   solanaAddress: string
   polkadotAddress: string
   nearAddress: string
@@ -57,6 +58,7 @@ const state = proxy<State>({
   activeChainId: '1',
   eip155Address: '',
   cosmosAddress: '',
+  bnbBeaconChainAddress: '',
   solanaAddress: '',
   polkadotAddress: '',
   nearAddress: '',
@@ -108,6 +110,10 @@ const SettingsStore = {
 
   setCosmosAddress(cosmosAddresses: string) {
     state.cosmosAddress = cosmosAddresses
+  },
+
+  setBnbBeaconChainAddress(bnbBeaconChainAddress: string) {
+    state.bnbBeaconChainAddress = bnbBeaconChainAddress
   },
 
   setSolanaAddress(solanaAddress: string) {

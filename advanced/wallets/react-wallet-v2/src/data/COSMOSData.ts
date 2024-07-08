@@ -14,7 +14,7 @@ export const COSMOS_MAINNET_CHAINS = {
     rgb: '107, 111, 147',
     rpc: '',
     namespace: 'cosmos'
-  }
+  },
 }
 
 /**

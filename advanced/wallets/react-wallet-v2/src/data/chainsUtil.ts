@@ -8,10 +8,12 @@ import { POLKADOT_CHAINS } from './PolkadotData'
 import { SOLANA_CHAINS } from './SolanaData'
 import { TEZOS_CHAINS } from './TezosData'
 import { TRON_CHAINS } from './TronData'
+import { BBC_CHAINS } from './BnbBeaconChainData'
 
 export const ALL_CHAINS = {
   ...EIP155_CHAINS,
   ...COSMOS_MAINNET_CHAINS,
+  ...BBC_CHAINS,
   ...KADENA_CHAINS,
   ...MULTIVERSX_CHAINS,
   ...NEAR_CHAINS,

@@ -20,6 +20,7 @@ import AuthRequestModal from '@/views/AuthRequestModal'
 import LoadingModal from '@/views/LoadingModal'
 import SessionAuthenticateModal from '@/views/SessionAuthenticateModal'
 import SessionGrantPermissionsModal from '@/views/SessionGrantPermissionsModal'
+import SessionSignBbcModal from '@/views/SessionSignBbcModal'
 
 export default function Modal() {
   const { open, view } = useSnapshot(ModalStore.state)
@@ -48,6 +49,8 @@ export default function Modal() {
         return <SessionUnsuportedMethodModal />
       case 'SessionSignCosmosModal':
         return <SessionSignCosmosModal />
+      case 'SessionSignBbcModal':
+        return <SessionSignBbcModal />
       case 'SessionSignSolanaModal':
         return <SessionSignSolanaModal />
       case 'SessionSignPolkadotModal':
